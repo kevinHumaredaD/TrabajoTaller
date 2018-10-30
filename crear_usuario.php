@@ -9,11 +9,14 @@
 </head>
 <body>
     <?php include 'partes/header.php' ?>
-    <?php if(isset($_GET["1"])) { ?>
+    <?php if(isset($_GET["error"])) { ?>
             <p class="alerta">Error en la contraseña, intente nuevamente</p>
     <?php } ?>    
+    <?php if(isset($_GET["vacio"])) { ?>
+            <p class="alerta">Error, llene los espacios en blanco</p>
+    <?php } ?>  
     <form action="usuario_procesar.php" method="post">
-        <div class="contenedor">
+        <div class="contenedorFormulario">
         <div>
             Nombre: <input type="text" name="name" id="name">
         </div>
