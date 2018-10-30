@@ -8,7 +8,12 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <?php include 'partes/header.php' ?>
+    <?php if(isset($_GET["1"])) { ?>
+            <p class="alerta">Error en la contraseña, intente nuevamente</p>
+    <?php } ?>    
     <form action="usuario_procesar.php" method="post">
+        <div class="contenedor">
         <div>
             Nombre: <input type="text" name="name" id="name">
         </div>
@@ -40,7 +45,10 @@
             Confirmar Contraseña: <input type="password" name="confirmar" id="confirmar">
         </div>
         <button type="submit">Registrar</button>
+        </div>
     </form>
+    
+    
     
 </body>
 </html>
