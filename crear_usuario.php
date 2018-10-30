@@ -25,11 +25,11 @@
                     <div>
                         <label for="">Apellidos:</label>
                     </div>
-                    <div>
-                        <input type="text" placeholder="Apellido Paterno" name="apellidoP">
-                    </div>
-                    <div>
-                        <input type="text" placeholder="Apellido Materno" name="apellidoM">
+                    <div style="display: flex">
+                        <div>
+                            <input type="text" placeholder="Apellido Paterno" name="apellidoP">
+                            <input type="text" placeholder="Apellido Materno" name="apellidoM">
+                        </div>
                     </div>
                 </div>
                 <div>

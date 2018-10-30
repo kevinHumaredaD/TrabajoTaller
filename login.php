@@ -20,7 +20,7 @@ include 'partes/conexion.php'
                     <strong class="alerta">Datos Incorrectos.</strong>
             <?php } ?>
             
-            <form action="procesar_login.php" method="post">
+            <form action="login_procesar.php" method="post">
                 <div style="display: flex">
                     <div>
                         <div>

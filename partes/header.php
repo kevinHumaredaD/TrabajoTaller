@@ -2,7 +2,9 @@
     <a href="index.php">Portada</a>
     <a href="mostrar_productos.php">Productos registrados</a>
     <a href="">Vendedores destacados</a>
+    <?php if(isset($_SESSION["correo"])){?> 
     <a href="crear_usuario.php">Crear cuenta de usuario</a>
+    <?php } ?>
     <?php if(isset($_SESSION["correo"])) {?>
         <a href="logout.php">Cerrar Sesion</a>
     <?php }else{ ?>
