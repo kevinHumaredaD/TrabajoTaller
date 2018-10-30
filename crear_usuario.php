@@ -8,50 +8,90 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <h1>Kean Store</h1>
     <?php include 'partes/header.php' ?>
-    <?php if(isset($_GET["error"])) { ?>
-            <p class="alerta">Error en la contraseña, intente nuevamente</p>
-    <?php } ?>    
-    <?php if(isset($_GET["vacio"])) { ?>
-            <p class="alerta">Error, llene los espacios en blanco</p>
-    <?php } ?>  
-    <form action="usuario_procesar.php" method="post">
+    <div class="Formulario">
         <div class="contenedorFormulario">
-        <div>
-            Nombre: <input type="text" name="name" id="name">
+            <form action="usuario_procesar.php" method="post">
+                <div>
+                    <div>
+                        <label for="">Nombre:</label>
+                    </div>
+                    <div>
+                        <input type="text" name="name">
+                    </div> 
+                </div>
+                <div>
+                    <div>
+                        <label for="">Apellidos:</label>
+                    </div>
+                    <div>
+                        <input type="text" placeholder="Apellido Paterno" name="apellidoP">
+                    </div>
+                    <div>
+                        <input type="text" placeholder="Apellido Materno" name="apellidoM">
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <label for="">DNI:</label>
+                    </div>
+                    <div>
+                        <input type="text" name="dni">
+                    </div> 
+                </div>
+                <div>
+                    <div>
+                        <label for="">Fecha de Nacimiento:</label>
+                    </div>
+                    <div>
+                        <input type="date" name="fecha_nacimiento">
+                    </div> 
+                </div>
+                <div>
+                    <div>
+                        <label for="">Dirección:</label>
+                    </div>
+                    <div>
+                        <input type="text" name="direccion">
+                    </div> 
+                </div>
+                <div>
+                    <div>
+                        <label for="">Teléfono:</label>
+                    </div>
+                    <div>
+                        <input type="text" name="telefono">
+                    </div> 
+                </div>
+                <div>
+                    <div>
+                        <label for="">Correo Electrónico:</label>
+                    </div>
+                    <div>
+                        <input type="email" name="correo">
+                    </div> 
+                </div>
+                <div>
+                    <div>
+                        <label for="">Contraseña:</label>
+                    </div>
+                    <div>
+                        <input type="password" name="contraseña">
+                    </div> 
+                </div>
+                <div>
+                    <div>
+                        <label for="">Confirmar contraseña:</label>
+                    </div>
+                    <div>
+                        <input type="password" name="confirmar">
+                    </div> 
+                </div>
+
+                <button type="submit">Registrar</button>
+            </form>
         </div>
-        <div>
-            Apellido Paterno: <input type="text" name="apellidoP" id="apellidoP">
-        </div>
-        <div>
-            Apellido Materno: <input type="text" name="apellidoM" id="apellidoM">
-        </div>
-        <div>
-            DNI: <input type="text" name="dni" id="dni">
-        </div>
-        <div>
-            Fecha de Nacimiento: <input type="date" name="fecha_nacimiento" id="fecha_nacimiento">
-        </div>
-        <div>
-            Dirección: <input type="text" name="direccion" id="direccion">
-        </div>
-        <div>
-            Teléfono: <input type="text" name="telefono" id="telefono">
-        </div>
-        <div>
-            Correo Electrónico: <input type="email" name="correo" id="correo">            
-        </div>
-        <div>
-            Contraseña: <input type="password" name="contraseña" id="contraseña">
-        </div>
-        <div>
-            Confirmar Contraseña: <input type="password" name="confirmar" id="confirmar">
-        </div>
-        <button type="submit">Registrar</button>
-        </div>
-    </form>
-    
-    
-    
+    </div>
 </body>
 </html>
