@@ -8,42 +8,13 @@ h1{
 nav{
     display: flex;
     justify-content: center;
+    background-color: aqua;
 }
 nav a{
     padding: 10px;
     text-decoration: none;
 }
-table{
-    width: 100%;
-    border-collapse: collapse;
-    margin: auto;
-}
-table tr td, table tr th{
-    padding: 5px;
-}
-th, td{
-    border: 2px solid #ccc;
-}
-nav{
-    background-color: yellow;
-}
 nav>a{
     color: black;
     font-weight: bold;
-}
-.contenedorRegistro div, .contenedorNoticia div{
-    margin: 10px 0 10px 0;
-}
-.contenedorRegistro input, .contenedorNoticia input{
-    padding: 5px;
-}
-.contenedorRegistro, .contenedorNoticia{
-    width:500px;
-    margin: auto;
-}
-#footerAll{
-    border-top: 2px solid black;
-    text-align: center;
-    font-size: 20px;
-    margin-top: 50px;
 }
