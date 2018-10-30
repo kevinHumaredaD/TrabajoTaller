@@ -18,10 +18,20 @@ nav>a{
     color: black;
     font-weight: bold;
 }
-.contenedor{    
-    text-align: center;
+.contenedorFormulario{
+    margin: auto;
+    width: 500px;    
+}
+.contenedorFormulario div{
+    margin: 10px 0 10px 0;
+}
+.contenedorFormulario input{
+    padding: 5px;
 }
 .alerta{
-    text-align: center;
     color:red;
+    text-align: center;
 }
+
+
+
