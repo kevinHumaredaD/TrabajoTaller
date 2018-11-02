@@ -26,6 +26,7 @@
         else{               
             $contraseña=sha1($contraseña);        
             $db->query("INSERT INTO usuario VALUES(null,'$nombre','$apellidoP','$apellidoM','$correo','$dni','$fecha_nacimiento','$direccion','$telefono','$contraseña')");
+            
             header("Location:index.php");
             
         }

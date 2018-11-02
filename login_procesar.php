@@ -15,6 +15,9 @@
         session_start();
         $u= $usuario[0];
         $_SESSION["correo"]=$u["correo"];
+        $_SESSION["nombre"]=$u["nombre"];
+        $_SESSION["apellidoP"]=$u["apellidoP"];
+        $_SESSION["apellidoM"]=$u["apellidoM"];
     }
     #Salida
     if($validacion){
