@@ -10,6 +10,12 @@
 <body>
     <h1>Kean Store</h1>
     <?php include 'partes/header.php' ?>
+    <?php if(isset($_GET["error"])) { ?>
+        <strong class="alerta">Error en la confirmación de contraseña</strong>
+    <?php } ?>
+    <?php if(isset($_GET["correo"])) { ?>
+        <strong class="alerta">Error,ese correo ya existe. Intente con otro</strong>
+    <?php } ?>    
     <div class="Formulario">
         <div class="contenedorFormulario">
             <form action="usuario_procesar.php" method="post">

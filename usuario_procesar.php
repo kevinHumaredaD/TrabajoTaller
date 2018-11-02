@@ -8,18 +8,32 @@
     $telefono=$_POST["telefono"];
     $correo=$_POST["correo"];
     $contraseña=$_POST["contraseña"];
-    $confirmar=$_POST["confirmar"];
-        
-    if($contraseña!=$confirmar){
-        header("Location:crear_usuario.php?error=1");
+    $confirmar=$_POST["confirmar"];    
+    include 'partes/conexion.php';    
+    $sentencia=$db->query("SELECT * FROM usuario");
+    $usuario= $sentencia->fetchAll();
+    $estado=false;
+    foreach($usuario as $u){
+        if($correo==$u['correo']){
+            header("Location:crear_usuario.php?correo=1");
+            $estado=true;
+        }               
     }
-    else{               
-        $contraseña=sha1($contraseña);
-        include 'partes/conexion.php';
-        $db->query("INSERT INTO usuario VALUES(null,'$nombre','$apellidoP','$apellidoM','$correo','$dni','$fecha_nacimiento','$direccion','$telefono','$contraseña')");
-        header("Location:index.php");
-        
+    if($estado==false){
+        if($contraseña!=$confirmar){
+            header("Location:crear_usuario.php?error=1");
+        }
+        else{               
+            $contraseña=sha1($contraseña);        
+            $db->query("INSERT INTO usuario VALUES(null,'$nombre','$apellidoP','$apellidoM','$correo','$dni','$fecha_nacimiento','$direccion','$telefono','$contraseña')");
+            header("Location:index.php");
+            
+        }
     }
+    
+    
+    
+    
        
 
 ?>
