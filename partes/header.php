@@ -7,6 +7,7 @@
     <?php }?>
     <?php if(isset($_SESSION["correo"])) {?>
         <a href="logout.php">Cerrar Sesion</a>
+        <a href="registrar_producto.php">Registrar producto</a>
     <?php }else{ ?>
         <a href="login.php">Iniciar sesion</a>
     <?php } ?>
