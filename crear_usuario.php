@@ -10,7 +10,7 @@
 <body>
     <h1>Kean Store</h1>
     <?php include 'partes/header.php' ?>
-    
+    <h2> Registrar Nueva Cuenta</h2>
     <div class="Formulario">
         <div class="contenedorFormulario">
             <form action="usuario_procesar.php" method="post">

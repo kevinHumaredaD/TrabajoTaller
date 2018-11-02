@@ -7,7 +7,9 @@
     <?php }?>
     <?php if(isset($_SESSION["correo"])) {?>
         <a href="logout.php">Cerrar Sesion</a>
+        <a href="libro_reclamo.php">Libro de Reclamo</a>
     <?php }else{ ?>
         <a href="login.php">Iniciar sesion</a>
     <?php } ?>
+    
 </nav>
