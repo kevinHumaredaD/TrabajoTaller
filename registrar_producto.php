@@ -1,5 +1,7 @@
 <?php
     session_start();
+    include 'partes/conexion.php';
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,12 +13,26 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Kean Store</h1>
+    <?php include 'partes/cliente.php' ?>  
     <?php include 'partes/header.php' ?>
+    
+    <?php 
+        $sentencia=$db->query("SELECT * FROM usuario");
+        $usuario= $sentencia->fetchAll();
+        foreach($usuario as $u){
+            if($_SESSION["correo"]==$u["correo"]){
+                $id=$u["idCliente"];
+            }       
+        }
+    ?>
     <div class="Formulario">
         <div class="contenedorFormulario">      
-            <form action="foto_post.php" method="POST">
+            <form action="procesar_producto.php" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="id" value="<?php echo $id?>">
                 <h1>Formulario de registrar producto</h1>
+                <?php if(isset($_GET["nulo"])){?>
+                    <strong class="alerta">Ingrese un tipo de producto valido.</strong>
+                <?php } ?>
                 <div>
                     <div>
                         <label for="">Ingrese el nombre de producto:</label>
@@ -43,9 +59,12 @@
                 </div>
                 <div>
                     <div>
+                        <label for="">Tipo de producto</label>
+                    </div>
+                    <div>
                         <select name="tipo_juguete" id="">
-                            <option value="">-------Seleccione-------</option>
-                            <option value="juguetes">Muebles</option>
+                            <option value="nulo">-------Seleccione-------</option>
+                            <option value="muebles">Muebles</option>
                             <option value="tecnologia">Tecnología</option>
                             <option value="electrodomesticos">Electrodomesticos</option>
                             <option value="deportes">Deportes</option>

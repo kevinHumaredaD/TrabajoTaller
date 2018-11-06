@@ -20,21 +20,18 @@
         }               
     }
     if($estado==false){
-        if($contraseña!=$confirmar){
-            header("Location:crear_usuario.php?error=1");
+        if(empty($nombre) || empty($apellidoP) || empty($apellidoM) || empty($dni) || empty($fecha_nacimiento) || empty($direccion) || empty($telefono) || empty($correo) || empty($contraseña) || empty($confirmar)){
+            header("Location: crear_usuario.php?vacio=2");
+        }else{
+            if($contraseña!=$confirmar){
+                header("Location: crear_usuario.php?error=1");
+            }else{
+                $contraseña=sha1($contraseña);        
+                $db->query("INSERT INTO usuario VALUES(null,'$nombre','$apellidoP','$apellidoM','$correo','$dni','$fecha_nacimiento','$direccion','$telefono','$contraseña','0')");
+                
+                header("Location:index.php");
+            }
         }
-        else{               
-            $contraseña=sha1($contraseña);        
-            $db->query("INSERT INTO usuario VALUES(null,'$nombre','$apellidoP','$apellidoM','$correo','$dni','$fecha_nacimiento','$direccion','$telefono','$contraseña')");
-            
-            header("Location:index.php");
-            
-        }
-    }
-    
-    
-    
-    
-       
 
-?>
+    }
+   
