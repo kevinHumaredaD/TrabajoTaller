@@ -13,7 +13,7 @@
     <h2> Registrar Nueva Cuenta</h2>
     <div class="Formulario">
         <div class="contenedorFormulario">
-            <form action="usuario_procesar.php" method="post">
+            <form action="procesar_usuario.php" method="post">
                 <?php if(isset($_GET["error"])) { ?>
                 <strong class="alerta">Error en la confirmación de contraseña</strong>
                     <?php } ?>
