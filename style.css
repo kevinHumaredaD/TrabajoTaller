@@ -32,6 +32,52 @@ nav>a{
     color:red;
     text-align: center;
 }
+#tituloKean{
+    padding-left: 50px;
+    float: left;
+    width: 50%;
+}
+#login{
+
+    margin-left: 50%;
+}
+#bienvenido{
+    text-align: right;
+    font-weight: bold;
+    padding: 20px 20px 0 0;
+}
+.linkLogin{
+    text-decoration: none; 
+    color: blue; 
+    font-weight: bold;
+    margin-right: 15px;
+}
+table{
+    width: 100%;
+    border-collapse: collapse;
+    margin: auto;
+}
+.tabla{
+    text-align: center;
+}
+table tr td, table tr th{
+    padding: 5px;
+}
+th, td{
+    border: 2px solid #ccc;
+}
+.imagenesDetalles{
+    width: 400px; 
+    text-align:center;
+    margin-right: 20px;
+}
+#detalles{
+    padding: 15px;
+    border: 10px double black;
+}
+.tablaProductoCliente{
+    text-align: center;
+}
 
 
 
