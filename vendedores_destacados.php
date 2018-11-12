@@ -1,8 +1,8 @@
 <?php
     session_start();
     include 'partes/conexion.php';
-    $sentencia=$db->query("SELECT * FROM usuario");
-    $usuario=$sentencia->fetchAll();    
+    $sentencia=$db->query("SELECT * FROM usuario ORDER BY valoracion/contador desc LIMIT 3");
+    $u=$sentencia->fetchAll();    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,21 +14,85 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <?php include 'partes/foto.php' ?>
     <?php include 'partes/cliente.php' ?>
     <?php include 'partes/header.php' ?>
-    <?php 
-        $uinicial=$usuario[0];        
-        $mayor=0;
-        $mejor='';
-    foreach($usuario as $u){        
-        if($mayor<$u["puntaje"]){
-            $mayor=$u["puntaje"];
-            $mejor=$u["nombre"];
-        }        
-    } 
-    echo $mejor;
-    ?>
-    
-    
+    <h1 class="tittle">Vendedores Destacados</h1>
+    <?php if(count($u) == 0) {?>
+            
+            <strong style="text-align:center" >No existen usuarios registrados hasta el momento</strong>
+               
+    <?php }else{?>
+        <?php 
+            if($u[0]["valoracion"]==0){
+                $estrella=0;
+            }
+            else{
+                $estrella=round($u[0]["valoracion"]/$u[0]["contador"], 0, PHP_ROUND_HALF_ODD);
+            }
+        ?>
+    <div class="vendedoresdestacados" style="width: 1400px; margin: auto">
+            <div id="primero">
+                <div class="perfiles">    
+                        <img id= "fotoperfil" src="<?php echo $u[0]["foto"]?>" height="150">
+                    <p class="general"><?php echo $u[0]["nombre"]?> <?php echo $u[0]["apellidoP"]?> <?php echo $u[0]["apellidoM"]?></p>
+                    <p>Correo: <?php echo $u[0]["correo"]?></p>
+                    <div> 
+                        <?php if($estrella==0 ||$estrella==1 ){ ?>
+                            <img class="valor" src="partes/unaestrella.jpg" alt="">
+                        <?php } ?>
+                        <?php if($estrella==2 ){ ?>
+                            <img class="valor" src="partes/dosestrella.jpg" alt="">
+                        <?php } ?>
+                        <?php if($estrella==3 ){ ?>
+                            <img class="valor" src="partes/tresestrella.jpg" alt="">
+                        <?php } ?>
+                        <?php if($estrella==4 ){ ?>
+                            <img class="valor" src="partes/cuatroestrella.jpg" alt="">
+                        <?php } ?>
+                        <?php if($estrella==5 ){ ?>
+                            <img class="valor" src="partes/cincoestrella.jpg" alt="">
+                        <?php } ?>
+                    </div>
+                </div> 
+            </div>             
+            <div id="basedestacada">
+                <?php  for ($i=1; $i <count($u) ; $i++) { ?>
+                    <?php 
+                    if($u[$i]["valoracion"]==0){
+                        $estrella=0;
+                    }
+                    else{
+                        $estrella=$u[$i]["valoracion"]/$u[$i]["contador"];
+                    }
+                    ?>        
+                    <div class="perfiles">      
+                            <img id= "fotoperfil" src="<?php echo $u[$i]["foto"]?>" height="150">
+                        <p class="general"><?php echo $u[$i]["nombre"]?> <?php echo $u[$i]["apellidoP"]?> <?php echo $u[$i]["apellidoM"]?></p>
+                        <p>Correo: <?php echo $u[$i]["correo"]?></p>
+                        <div>
+                            <?php if($estrella==0 ||$estrella==1 ){ ?>
+                                <img class="valor" src="partes/unaestrella.jpg" alt="">
+                            <?php } ?>
+                            <?php if($estrella==2 ){ ?>
+                                <img class="valor" src="partes/dosestrella.jpg" alt="">
+                            <?php } ?>
+                            <?php if($estrella==3 ){ ?>
+                                <img class="valor" src="partes/tresestrella.jpg" alt="">
+                            <?php } ?>
+                            <?php if($estrella==4 ){ ?>
+                                <img class="valor" src="partes/cuatroestrella.jpg" alt="">
+                            <?php } ?>
+                            <?php if($estrella==5 ){ ?>
+                                <img class="valor" src="partes/cincoestrella.jpg" alt="">
+                            <?php } ?>
+                        </div>
+                    </div>
+                <?php } ?>
+            </div> 
+        </div> 
+
+        
+    <?php } ?>
 </body>
 </html>

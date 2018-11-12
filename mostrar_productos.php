@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <?php include 'partes/foto.php' ?>
     <?php include 'partes/cliente.php' ?>  
     <?php include 'partes/header.php' ?>
     <h2 class="titulos">Productos registrados</h2>
@@ -41,7 +42,7 @@
                 <td><?php echo $p["precio"]?></td>
                 <td><?php echo $p["tipo"]?></td>
                 <td><div style="width: 600px; height: 100px"><?php echo $p["descripcion"]?></div></td>
-                <?php if($p["estado"]==1) { ?>
+                <?php if($p["estadovendido"]==1) { ?>
                     <td><p>Vendido</p></td>
                 <?php } else { ?>               
                     <td><p>En espera</p></td>

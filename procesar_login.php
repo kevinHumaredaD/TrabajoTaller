@@ -16,11 +16,12 @@
         $_SESSION["nombre"]=$u["nombre"];
         $_SESSION["apellidoP"]=$u["apellidoP"];
         $_SESSION["apellidoM"]=$u["apellidoM"];
+        
     }
     #Salida
     if($validacion){
         header("Location: index.php");
     }else{
-        header("Location: index.php?error=1");
+        header("Location: login.php?error=1");
     }
 ?>

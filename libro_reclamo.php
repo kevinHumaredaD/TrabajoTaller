@@ -1,3 +1,16 @@
+<?php
+    session_start();
+    if(!isset($_SESSION["correo"])){
+        header("Location: error_contenido.php");
+        die();
+    }
+    $correoCliente=$_SESSION["correo"];
+    include 'partes/conexion.php';
+    $stn=$db->query("SELECT * FROM usuario where correo='$correoCliente'");
+    $Cliente= $stn->fetchAll();
+    $idC=$Cliente[0];
+    $idCliente=$idC["idCliente"];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,24 +21,26 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Kean Store</h1>
-    <?php include 'partes/header.php' ?>    
-    <h2> Registrar Reclamo</h2>
+    <?php include 'partes/foto.php' ?>
+    <?php include 'partes/cliente.php' ?>  
+    <?php include 'partes/header.php' ?>  
+    <h2 class="titulos"> Registrar Reclamo</h2>
     <div class="Formulario">
         <div class="contenedorFormulario">
-            <form action="usuario_procesar.php" method="post">
-                <?php if(isset($_GET["error"])) { ?>
-                <strong class="alerta">Error en la confirmación de contraseña</strong>
+            <form action="procesar_reclamo.php" method="post">
+                <input type="hidden" name="idCliente" value="<?php echo $idCliente?>">
+                <?php if(isset($_GET["vacio"])) { ?>
+                <strong class="alerta">Por favor rellene los espacios en blanco</strong>
                     <?php } ?>
                 <?php if(isset($_GET["correo"])) { ?>
-                    <strong class="alerta">Error,ese correo ya existe. Intente con otro</strong>
+                    <strong class="alerta">El correo del vendedor no existe</strong>
                 <?php } ?>   
                 <div>
                     <div>
                         <label for="">Correo:</label>
                     </div>
                     <div>
-                        <input type="email" name="correo">
+                        <input type="email" name="correo" value="<?php echo $_SESSION["correo"] ?>">
                     </div> 
                 </div>         
                 
@@ -34,7 +49,7 @@
                         <label for="">Correo del vendedor:</label>
                     </div>
                     <div>
-                        <input type="email" name="correovend">
+                        <input type="email" name="correovendedor">
                     </div> 
                 </div>                
                 <div>

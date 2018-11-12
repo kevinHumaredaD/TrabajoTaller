@@ -1,7 +1,10 @@
 <?php
     session_start();
     include 'partes/conexion.php';
-    
+    if(!isset($_SESSION["correo"])){
+        header("Location: error_contenido.php");
+        die();
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,6 +16,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <?php include 'partes/foto.php' ?>
     <?php include 'partes/cliente.php' ?>  
     <?php include 'partes/header.php' ?>
     
@@ -28,7 +32,7 @@
     <div class="Formulario">
         <div class="contenedorFormulario">      
             <form action="procesar_producto.php" method="POST" enctype="multipart/form-data">
-                <input type="hidden" name="id" value="<?php echo $id?>">
+                <input type="hidden" name="idVendedor" value="<?php echo $id?>">
                 <h1>Formulario de registrar producto</h1>
                 <?php if(isset($_GET["nulo"])){?>
                     <strong class="alerta">Ingrese un tipo de producto valido.</strong>
@@ -69,8 +73,8 @@
                             <option value="electrodomesticos">Electrodomesticos</option>
                             <option value="deportes">Deportes</option>
                             <option value="juguetes">Juguetes</option>
-                            <option value="vehiculos">Accesorios para vehiculos</option>
-                            <option value="ropa">Ropa y accesorios</option>
+                            <option value="accesorios para vehiculos">Accesorios para vehiculos</option>
+                            <option value="ropa y accesorios">Ropa y accesorios</option>
                             <option value="joyas">Joyas</option>
                         </select>
                     </div>

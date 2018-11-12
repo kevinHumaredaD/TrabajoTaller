@@ -1,0 +1,84 @@
+html,body{
+    background-image: url('http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    font-family: 'Numans', sans-serif;
+    }
+
+.Login{
+    height: 100%;
+    align-content: center;
+}
+
+    
+.contenedorLogin{
+    height: 100%;
+    margin: auto;
+    width: 400px;
+    background-color: rgba(0,0,0,0.5);
+}
+.contenedorRegistro{
+    height: 100%;
+    margin: auto;
+    width: 450px;
+    background-color: rgba(0,0,0,0.5);
+}
+.header, .contenedorRegistro div{
+    margin-left: 5px;
+    margin-top: 8px;
+}
+.header h2, .contenedorRegistro label{
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+}
+.header{
+    padding-top: 5px;
+}
+.botonLogin{
+    color: black;
+    background-color: #FFC312;
+    width: 100px;
+    margin-left: 275px;
+    margin-top: 20px;
+    font-weight: bold;
+}
+.botonRegistro{
+    background-color: #FFC312;
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+    width: 95%;
+    height: 40px;
+    margin-top: 20px;
+    padding: 0;
+    margin-bottom: 15px;
+}
+.link{
+    color: white;
+    text-align: center;
+    margin-bottom: 15px;
+}  
+.link a{
+    margin-left: 4px;
+    color: rgb(112, 250, 19);
+}
+.formularioLogin input{
+    padding: 5.4px;
+    border-radius: 1px;
+}
+.form{
+    margin-left: 20px;
+}
+.form span{
+    width: 50px;
+    background-color: #FFC312;
+    color: black;
+}
+.alerta{
+    color:red;
+    text-align: center;
+    background-color: rgba(248, 151, 151, 0.952);
+    padding: 10px;
+}
+    

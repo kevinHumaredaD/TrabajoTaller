@@ -1,3 +1,15 @@
+<?php
+    session_start();
+    
+    if(!isset($_SESSION["correo"])){
+        header("Location: error_contenido.php");
+    }
+    include 'partes/conexion.php';
+    $correo=$_SESSION["correo"];
+    $sentencia=$db->query("SELECT * FROM usuario WHERE correo='$correo'");
+    $usuario= $sentencia->fetchAll();
+    $idCliente=$usuario[0]["idCliente"];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +25,7 @@
         <div class="contenedorRegistro">
                 <div style="display: flex">
                     <div class="header">
-                        <h2 style="color: rgb(82, 241, 8)">Crear cuenta de usuario</h2>
+                        <h2 style="color: rgb(82, 241, 8)">Editar mi informacion</h2>
                     </div>
                     <div style="margin: 25px 0 0 30px">
                         <img src="partes/logo.jpg" height="30px" style="padding-top:5px"> 
@@ -26,28 +38,20 @@
                         <strong class="alerta">¡Por favor, rellene los espacios en blanco!</strong>
                     </div>
                 <?php } ?>
-                <?php if(isset($_GET["incorrect"])){?>
-                    <div style="margin: 20px; text-align:center">
-                        <strong class="alerta">¡Las contraseña no coinciden!</strong>
-                    </div>
-                <?php } ?>
-                <?php if(isset($_GET["error"])){?>
-                    <div style="margin: 20px; text-align:center">
-                        <strong class="alerta">¡Error en la confirmación de contraseña!</strong>
-                    </div>
-                <?php } ?>
+
                 <?php if(isset($_GET["correo"])){?>
                     <div style="margin: 20px; text-align:center">
                         <strong class="alerta">¡El correo ya existe, intente con otro!</strong>
                     </div>
                 <?php } ?>
-                <form action="procesar_usuario.php" method="post">  
+                <form action="procesar_perfil.php" method="post">  
+                    <input type="hidden" name="idC" value="<?php echo $usuario[0]["idCliente"]?>">
                     <div>
                         <div>
                             <label for="">Nombre:</label>
                         </div>
                         <div>
-                            <input type="text" placeholder="Nombre" name="nombre">
+                            <input type="text" placeholder="Nombre" name="nombre" value="<?php echo $usuario[0]["nombre"]?>">
                         </div> 
                     </div>
                     <div>
@@ -55,8 +59,8 @@
                             <label for="">Apellidos:</label>
                         </div>
                         <div>
-                            <input type="text" placeholder="Apellido Paterno" name="apellidoP">
-                            <input type="text" placeholder="Apellido Materno" name="apellidoM">
+                            <input type="text" placeholder="Apellido Paterno" name="apellidoP" value="<?php echo $usuario[0]["apellidoP"]?>">
+                            <input type="text" placeholder="Apellido Materno" name="apellidoM" value="<?php echo $usuario[0]["apellidoM"]?>">
                         </div>
                     </div>
                     <div>
@@ -70,8 +74,8 @@
                                 </div>
                             </div>
                             <div>
-                                <input type="text"  placeholder="Numero de DNI"name="dni">
-                                <input type="text" placeholder="Telefono" name="telefono">
+                                <input type="text"  placeholder="Numero de DNI" name="dni" value="<?php echo $usuario[0]["dni"]?>">
+                                <input type="text" placeholder="Telefono" name="telefono" value="<?php echo $usuario[0]["telefono"]?>">
                             </div> 
                         </div>
                     </div>
@@ -80,7 +84,7 @@
                             <label for="">Dirección:</label>
                         </div>
                         <div>
-                            <input type="text" size="47" placeholder="Direccion" name="direccion">
+                            <input type="text" size="47" placeholder="Direccion" name="direccion" value="<?php echo $usuario[0]["direccion"]?>">
                         </div> 
                     </div>
                     <div>
@@ -88,7 +92,7 @@
                             <label for="">Fecha de Nacimiento:</label>
                         </div>
                         <div>
-                            <input type="date" name="fecha_nacimiento">
+                            <input type="date" name="fecha_nacimiento" value="<?php echo $usuario[0]["fecha_nacimiento"]?>">
                         </div> 
                     </div>
                     <div>
@@ -96,34 +100,13 @@
                             <label for="">Correo Electrónico:</label>
                         </div>
                         <div>
-                            <input type="email" placeholder="correo electronico" name="correo">
-                        </div> 
-                    </div>
-                    <div>
-                        <div>
-                            <label for="">Contraseña:</label>
-                        </div>
-                        <div>
-                            <input type="password" name="contraseña">
-                        </div> 
-                    </div>
-                    <div>
-                        <div>
-                            <label for="">Confirmar contraseña:</label>
-                        </div>
-                        <div>
-                            <input type="password" name="confirmar">
+                            <input type="email" placeholder="correo electronico" name="correo" value="<?php echo $usuario[0]["correo"]?>">
                         </div> 
                     </div>
                     <div style="text-align: center">
-                        <input type="submit" value="Registrarme" class="botonRegistro">
+                        <input type="submit" value="Actualizar datos" class="botonRegistro">
                     </div>      
                 </form>
-                </div>
-                <div style="margin-top: 15px">
-                    <div class="link">
-                        ¿Ya tienes una cuenta?<a href="login.php">Inicia sesión</a>
-                    </div>
                 </div>
         </div>
     </div>
