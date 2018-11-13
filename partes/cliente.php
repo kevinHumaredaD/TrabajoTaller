@@ -20,7 +20,7 @@
             <div>
                 <div style="display: flex;">
                     <div style="margin: 10px;">
-                        <img src="<?php 
+                        <img src="<?php
                         foreach ($cl as $c) {
                             if($c["correo"]==$_SESSION["correo"]){
                                 $foto=$c["foto"];
