@@ -37,7 +37,7 @@
             ?>
                         
             <div class="producto">
-            <img  src="data:image/jpg;base64,<?php echo base64_encode($p["imagen"])?>" height="150">
+            <img  src="<?php echo $p["imagen"]?>" height="150">
             <p><?php echo $p["nombre"]?></p>
             <p style="color:blue">S/<?php echo $p["precio"]?></p>
             <form action="detalles.php" method="get">
@@ -54,5 +54,6 @@
             </tr>
         <?php }?>
     </div>
+    <?php include 'partes/footer.php' ?>
 </body>
 </html>

@@ -22,6 +22,12 @@
                 header("Location: editar_perfil.php?correo=1");
                 $estado=true;
             }               
+            else{
+                if($dni==$u['dni']){
+                    header("Location: editar_perfil.php?dni=1");
+                    $estado=true;
+                }  
+            }
         }
     }else{
         if(empty($nombre) || empty($apellidoP) || empty($apellidoM) || empty($dni) || empty($fecha_nacimiento) || empty($direccion) || empty($telefono) || empty($correo)){

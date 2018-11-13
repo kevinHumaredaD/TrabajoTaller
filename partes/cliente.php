@@ -9,7 +9,7 @@
             <div id="login">
                 <div style="display: flex;">
                     <div style="margin-right: 10px;">
-                        <a class="linkLogin" href="crear_usuario.php"><img src="partes/registroImagen.png" width="20">    Nuevo usuaro</a>
+                        <a class="linkLogin" href="crear_usuario.php"><img src="partes/registroImagen.png" width="20">    Nuevo usuario</a>
                     </div>
                     <div>
                         <a class="linkLogin" href="login.php"><img src="partes/loginImagen.png" width="20">   Iniciar sesiòn</a>
@@ -30,7 +30,7 @@
                         ?>" width="50" height="50">
                     </div>
                     <div>
-                        <p id="bienvenido">Bienvenido, <?php echo $_SESSION["nombre"]?> <?php echo $_SESSION["apellidoP"]?> <?php echo $_SESSION["apellidoM"]?></p>
+                        <p id="bienvenido">Bienvenido(a), <?php echo $_SESSION["nombre"]?> <?php echo $_SESSION["apellidoP"]?> <?php echo $_SESSION["apellidoM"]?></p>
                     </div>
                 </div>
             </div>

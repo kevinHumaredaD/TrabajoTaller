@@ -57,14 +57,16 @@
     <?php } ?>
     
     <div id="contenidoperfil" style="width: 1500px; margin: auto">
-        <div class="perfiles">    
+        <div class="perfiles" style="height:433px;">    
             <img id= "fotoperfil" src="<?php echo $u["foto"]?>" height="150">
+            <?php if($_SESSION["correo"]==$u["correo"]) { ?>
             <form action="editar_foto_perfil.php" method="get">
                 <input type="hidden" name="idCliente" value="<?php echo $id?>">
                 <div style="text-align: center">
                     <input type="submit" value="Cambiar foto de perfil">
                 </div>
             </form>
+            <?php } ?>
             <p class="general"><?php echo $u["nombre"]?> <?php echo $u["apellidoP"]?> <?php echo $u["apellidoM"]?></p>
             <p> Fecha de nacimiento: <?php echo $u["fecha_nacimiento"]?></p>
             <p>Correo: <?php echo $u["correo"]?></p>
@@ -90,7 +92,7 @@
             </div>
             <?php if(isset($_GET["idperfil"])) { ?>
                 <div>
-                    <p class="general">Valorar al Vendedor</p> 
+                    <p style="margin-top:100px" class="general">Valorar al Vendedor</p> 
                     <form action="procesar_valoracion.php" method="post">  
                         <input type="hidden" name="valor" value="1">  
                         <input type="hidden" name="id" value="<?php echo $id?>">   
@@ -199,5 +201,6 @@
             </div>
         
     </div>
+    <?php include 'partes/footer.php' ?>
 </body>
 </html>

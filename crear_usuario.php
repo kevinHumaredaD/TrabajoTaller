@@ -1,3 +1,9 @@
+<?php 
+    $dia=getdate()['mday'];
+    $mes=getdate()['mon'];
+    $año=getdate()['year'];
+    
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,6 +45,11 @@
                 <?php if(isset($_GET["correo"])){?>
                     <div style="margin: 20px; text-align:center">
                         <strong class="alerta">¡El correo ya existe, intente con otro!</strong>
+                    </div>
+                <?php } ?>
+                <?php if(isset($_GET["dni"])){?>
+                    <div style="margin: 20px; text-align:center">
+                        <strong class="alerta">¡El DNI ya existe, intente con otro!</strong>
                     </div>
                 <?php } ?>
                 <form action="procesar_usuario.php" method="post">  
@@ -88,7 +99,7 @@
                             <label for="">Fecha de Nacimiento:</label>
                         </div>
                         <div>
-                            <input type="date" name="fecha_nacimiento">
+                            <input type="date" name="fecha_nacimiento" max="<?php echo $año-18?>-<?php echo $mes?>-<?php echo $dia?>">
                         </div> 
                     </div>
                     <div>

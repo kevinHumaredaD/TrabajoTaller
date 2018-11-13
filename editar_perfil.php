@@ -1,5 +1,8 @@
 <?php
     session_start();
+    $dia=getdate()['mday'];
+    $mes=getdate()['mon'];
+    $año=getdate()['year'];
     
     if(!isset($_SESSION["correo"])){
         header("Location: error_contenido.php");
@@ -42,6 +45,11 @@
                 <?php if(isset($_GET["correo"])){?>
                     <div style="margin: 20px; text-align:center">
                         <strong class="alerta">¡El correo ya existe, intente con otro!</strong>
+                    </div>
+                <?php } ?>
+                <?php if(isset($_GET["dni"])){?>
+                    <div style="margin: 20px; text-align:center">
+                        <strong class="alerta">¡El DNI ya existe, intente con otro!</strong>
                     </div>
                 <?php } ?>
                 <form action="procesar_perfil.php" method="post">  
@@ -92,7 +100,7 @@
                             <label for="">Fecha de Nacimiento:</label>
                         </div>
                         <div>
-                            <input type="date" name="fecha_nacimiento" value="<?php echo $usuario[0]["fecha_nacimiento"]?>">
+                            <input type="date" name="fecha_nacimiento" max="<?php echo $año-18?>-<?php echo $mes?>-<?php echo $dia?>" value="<?php echo $usuario[0]["fecha_nacimiento"]?>">
                         </div> 
                     </div>
                     <div>

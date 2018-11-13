@@ -9,12 +9,16 @@
         header("Location: error_contenido.php");
         die();
     }
+    $correo=$_GET["correoCliente"];
+    if($_SESSION["correo"]!=$correo){
+        header("Location: error_contenido.php");
+        die();
+    }
 
-    $correo=$_SESSION["correo"];
     $stn=$db->query("SELECT * FROM usuario where correo='$correo'");
     $usuario= $stn->fetchAll();
     $puntaje=$usuario[0]["puntajeventa"]+$usuario[0]["puntajecompra"];
-    $sentencia=$db->query("SELECT * FROM canje WHERE estado=0 and puntaje<=$puntaje");
+    $sentencia=$db->query("SELECT * FROM canje WHERE estado=1");
     $canje= $sentencia->fetchAll();
     
     
@@ -37,17 +41,14 @@
             <strong>Mis Puntos: <?php echo $puntaje?></strong>
         </div>
 
-        <?php foreach($canje as $c){ ?>                                   
+        <?php foreach($canje as $c){ ?>   
+            <?php if($c["idCanjeador"]==$usuario[0]["idCliente"]) {?>                                
             <div class="producto">
             <img  src="<?php echo $c["imagen"]?>" height="150">
             <p><?php echo $c["nombre"]?></p>
-            <p style="color:blue">Puntos:<?php echo $c["puntaje"]?></p>
-            <form action="detalles_canje.php" method="get">
-                <input type="hidden" name="id" value="<?php echo $c["id"]?>">                        
-                <input type="submit" class="button" value="Ver Detalles">
-            </form>
+            <p style="color:blue">Puntos:<?php echo $c["puntaje"]?></p>            
             </div>
-                
+            <?php } ?> 
         <?php } ?>
         
         <?php if(count($canje) == 0) {?> 

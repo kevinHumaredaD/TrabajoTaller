@@ -95,5 +95,6 @@
                 </form>
             <?php } ?>
         <?php }?>
+        <?php include 'partes/footer.php' ?>
 </body>
 </html>

@@ -68,5 +68,6 @@
         
         </div>   
     <?php }?>
+    <?php include 'partes/footer.php' ?>
 </body>
 </html>

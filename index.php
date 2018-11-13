@@ -46,7 +46,7 @@
                 <form action="perfil.php" method="get">
                     <input type="hidden" name="idperfil" value="<?php echo $idVendedor?>">    
                                                                 
-                    <input type="submit" class="button" style="margin:10px 0px" value="Ver Perfil Vendedor">
+                    <input type="submit" class="button" style="margin:10px 0px" value="Perfil Vendedor">
                 </form>
                 <?php } ?>  
             <?php } ?>
@@ -60,5 +60,6 @@
             
         <?php }?>
     </div>
+    <?php include 'partes/footer.php' ?>
 </body>
 </html>

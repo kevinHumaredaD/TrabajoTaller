@@ -41,7 +41,7 @@
                 </li>
                 <li>
                     <form action="producto_especifico.php" method="get">
-                        <input type="hidden" name="tipo" value="ropa y tipo">
+                        <input type="hidden" name="tipo" value="ropa y accesorios">
                         <button type="submit">Ropa y Accesorios</button>
                    </form>
                 </li>
@@ -60,13 +60,21 @@
         
         <li><a href="libro_reclamo.php"><div>Libro de Reclamo</div></a></li>
         <li><a href="registrar_producto.php"><div>Registrar Producto</div></a></li>
-        <li><a href="canjear.php"><div>Canjear</div></a></li>
+        
         <?php if($_SESSION["correo"]=="admin@admin"){?>
             <li><a href="registrar_canje.php"><div>Registrar Canje</div></a></li>
+        <?php } else{ ?>
+            <li><a href="canjear.php"><div>Canjear</div></a></li>
         <?php } ?>
         <li>
             <a href="perfil.php"><div><?php echo $_SESSION["nombre"]?> <?php echo $_SESSION["apellidoP"]?> <?php echo $_SESSION["apellidoM"]?></div></a>
                 <ul class="submenu">
+                    <li>
+                        <form action="mostrar_canje.php" method="get">                            
+                            <button type="submit">Mostrar Canje</button>
+                            <input type="hidden" name="correoCliente" value="<?php echo $_SESSION["correo"]?>">
+                        </form>
+                    </li> 
                     <li>
                         <form action="editar_perfil.php" method="get">
                             <input type="hidden" name="correoCliente" value="<?php echo $_SESSION["correo"]?>">

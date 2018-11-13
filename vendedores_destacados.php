@@ -1,7 +1,7 @@
 <?php
     session_start();
     include 'partes/conexion.php';
-    $sentencia=$db->query("SELECT * FROM usuario ORDER BY valoracion/contador desc LIMIT 3");
+    $sentencia=$db->query("SELECT * FROM usuario ORDER BY valoracion desc LIMIT 3");
     $u=$sentencia->fetchAll();    
 ?>
 <!DOCTYPE html>
@@ -63,7 +63,7 @@
                         $estrella=0;
                     }
                     else{
-                        $estrella=$u[$i]["valoracion"]/$u[$i]["contador"];
+                        $estrella=round($u[$i]["valoracion"]/$u[$i]["contador"], 0, PHP_ROUND_HALF_ODD);
                     }
                     ?>        
                     <div class="perfiles">      
@@ -94,5 +94,6 @@
 
         
     <?php } ?>
+    <?php include 'partes/footer.php' ?>
 </body>
 </html>

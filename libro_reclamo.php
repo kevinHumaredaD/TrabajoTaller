@@ -75,6 +75,7 @@
                 <button type="submit">Registrar</button>
             </form>
         </div>
-    </div>    
+    </div>   
+    <?php include 'partes/footer.php' ?> 
 </body>
 </html>

@@ -257,7 +257,14 @@ nav>ul>li>.submenu>li button{
     padding: 10px;
     font-weight: bold;
 }
-
+.pie{
+    background-color: rgba(0,0,0,0.5);
+}
+.pie div{
+    text-align: center;
+    margin-top:15px;
+    padding: 5px 0px;
+}
 
 
 
